@@ -1,0 +1,73 @@
+Here's a simple implementation of a chatbot in Python. This chatbot will respond to basic user queries like greeting, asking about the weather, and providing simple information about Python.
+
+```python
+class ChatBot:
+    def __init__(self):
+        self.name = "PythonPal"
+        self.greetings = ["Hello", "Hi", "Hey"]
+        self.weather = ["sunny", "cloudy", "rainy"]
+        self.info = {
+            "Python": "A high-level, interpreted programming language.",
+            "Java": "A high-level, object-oriented programming language.",
+            "C++": "A high-performance, compiled programming language."
+        }
+
+    def greet(self):
+        return random.choice(self.greetings) + ", I'm " + self.name
+
+    def ask_weather(self):
+        return "The weather is " + random.choice(self.weather) + " today."
+
+    def ask_language_info(self, language):
+        return self.info.get(language, "Sorry, I don't know about " + language + ".")
+
+    def chat(self):
+        print(self.greet())
+        while True:
+            query = input("User: ")
+            if "hello" in query.lower():
+                print(self.greet())
+            elif "weather" in query.lower():
+                print(self.ask_weather())
+            elif "what is" in query.lower():
+                language = query.split("what is")[1].strip()
+                print(self.ask_language_info(language))
+            elif "quit" in query.lower():
+                break
+            else:
+                print("Sorry, I didn't understand your query.")
+
+import random
+chat_bot = ChatBot()
+chat_bot.chat()
+```
+
+**Explanation:**
+
+1. The `ChatBot` class has an initializer method that sets up the chatbot's name and some basic data.
+2. The `greet` method returns a greeting message.
+3. The `ask_weather` method returns a message about the weather.
+4. The `ask_language_info` method takes a language as input and returns information about it.
+5. The `chat` method implements the chat loop where it continuously asks the user for input and responds based on the input.
+
+**Time Complexity:**
+
+* The time complexity of the above code is O(1) because it only involves basic operations like checking if a condition is true, making a choice from a list, or looking up a value in a dictionary. The `input` function, which waits for user input, has a time complexity of O(1) as well.
+
+**Test Cases:**
+
+* Test case 1: User greets the chatbot.
+	+ Input: "hello"
+	+ Output: "Hello, I'm PythonPal"
+* Test case 2: User asks about the weather.
+	+ Input: "what's the weather like"
+	+ Output: "The weather is sunny today."
+* Test case 3: User asks about a programming language.
+	+ Input: "what is Python"
+	+ Output: "A high-level, interpreted programming language."
+* Test case 4: User asks about a language that's not in the dictionary.
+	+ Input: "what is Ruby"
+	+ Output: "Sorry, I don't know about Ruby."
+* Test case 5: User asks to quit the chat.
+	+ Input: "quit"
+	+ Output: The chat loop ends.

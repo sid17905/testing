@@ -1,0 +1,4 @@
+Alice completed API authentication module
+Bob working on payment gateway integration
+Charlie fixing login bug
+Payment gateway facing timeout issue
